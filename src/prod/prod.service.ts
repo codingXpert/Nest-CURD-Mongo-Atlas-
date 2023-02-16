@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose';
 import { Prod, ProdDocument } from 'schemas/prod.schema';
+import { UpdateProdDto } from './dto/update-prod.dto';
 
 @Injectable()
 export class ProdService {
@@ -20,9 +21,8 @@ export class ProdService {
   findOne(id: number) {
     return `This action returns a #${id} prod`;
   }
-
-  update(id: number, updateProdDto) {
-    return `This action updates a #${id} prod`;
+  async update(id:string , data:UpdateProdDto):Promise<Prod> {
+    return await this.userModel.findByIdAndUpdate(id , data , {new:true});
   }
 
   remove(id: number) {
