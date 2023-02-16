@@ -2,14 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProdService } from './prod.service';
 import { CreateProdDto } from './dto/create-prod.dto';
 import { UpdateProdDto } from './dto/update-prod.dto';
+import { Prod } from 'schemas/prod.schema';
 
 @Controller('prod')
 export class ProdController {
   constructor(private readonly prodService: ProdService) {}
 
   @Post()
-  create(@Body() createProdDto: CreateProdDto) {
-    return this.prodService.create(createProdDto);
+  createProd(@Body() createProdDto: Prod) {
+    return this.prodService.createProd(createProdDto);
   }
 
   @Get()

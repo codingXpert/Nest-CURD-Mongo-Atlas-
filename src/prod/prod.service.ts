@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProdDto } from './dto/create-prod.dto';
-import { UpdateProdDto } from './dto/update-prod.dto';
+import { InjectModel } from '@nestjs/mongoose'
+import { Model } from 'mongoose';
+import { Prod, ProdDocument } from 'schemas/prod.schema';
 
 @Injectable()
 export class ProdService {
-  create(createProdDto: CreateProdDto) {
-    return 'This action adds a new prod';
+  constructor(@InjectModel('prod') private readonly userModel:Model<ProdDocument>){}  // 'prod is the name of db or model'
+  async createProd(prod: Prod):Promise<Prod> {
+    const newProd = new this.userModel(prod);
+    return newProd.save();
   }
 
   findAll() {
@@ -16,7 +19,7 @@ export class ProdService {
     return `This action returns a #${id} prod`;
   }
 
-  update(id: number, updateProdDto: UpdateProdDto) {
+  update(id: number, updateProdDto) {
     return `This action updates a #${id} prod`;
   }
 

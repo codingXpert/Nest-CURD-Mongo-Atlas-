@@ -9,7 +9,6 @@ import { ProdModule } from './prod/prod.module';
   imports: [
     ProdModule,
     MongooseModule.forRoot('mongodb+srv://Vivek:72NuC07qybp0LpDv@cluster0.adf3vri.mongodb.net/nest_db?retryWrites=true&w=majority'),
-    MongooseModule.forFeature([{name:'prod' , schema:ProdSchema}])
   ],
   controllers: [AppController],
   providers: [AppService],

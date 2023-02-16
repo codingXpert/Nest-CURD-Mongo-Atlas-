@@ -8,7 +8,7 @@ export class Prod {
     prod_name: string;
 
     @Prop()
-    prod_price: string;
+    prod_price: number;
 
     @Prop({default: Date.now})
     date: Date;
