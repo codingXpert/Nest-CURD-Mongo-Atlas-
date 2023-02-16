@@ -10,9 +10,11 @@ export class ProdService {
     const newProd = new this.userModel(prod);
     return newProd.save();
   }
-
+// reading the prod collectiom
   findAll() {
-    return `This action returns all prod`;
+     return this.userModel.find({})
+     .then((prod) => {return prod})
+     .catch((err) => console.log(err)); 
   }
 
   findOne(id: number) {

@@ -13,9 +13,9 @@ export class ProdController {
     return this.prodService.createProd(createProdDto);
   }
 
-  @Get()
-  findAll() {
-    return this.prodService.findAll();
+  @Get('/all')
+  async findAll() {
+    return await this.prodService.findAll();
   }
 
   @Get(':id')
