@@ -25,7 +25,7 @@ export class ProdService {
     return await this.userModel.findByIdAndUpdate(id , data , {new:true});
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} prod`;
+ async remove(id: string) {
+    return await this.userModel.findByIdAndRemove(id);
   }
 }
