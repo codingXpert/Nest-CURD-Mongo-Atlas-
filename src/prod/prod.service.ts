@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose';
 import { Prod, ProdDocument } from 'schemas/prod.schema';
+import { CreateProdDto } from './dto/create-prod.dto';
 import { UpdateProdDto } from './dto/update-prod.dto';
 
 @Injectable()
 export class ProdService {
   constructor(@InjectModel('prod') private readonly userModel:Model<ProdDocument>){}  // 'prod is the name of db or model'
-  async createProd(prod: Prod):Promise<Prod> {
+  async createProd(prod: CreateProdDto):Promise<Prod> {
     const newProd = new this.userModel(prod);
     return newProd.save();
   }
