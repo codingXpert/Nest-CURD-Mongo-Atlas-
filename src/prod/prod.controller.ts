@@ -39,4 +39,11 @@ export class ProdController {
   remove(@Param('id') id: string) {
     return this.prodService.remove(id);
   }
+
+  //Aggrigation
+
+  @Get()
+  async aggrigate(){
+    return await this.prodService.aggrigate();
+  }
 }
